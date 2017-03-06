@@ -1,0 +1,14 @@
+- if session[:user]
+  p
+    | You are logged in as: #{session[:user].username}
+    a< href="/logout" Log out
+
+  h2 Attributes
+  dl
+    - session[:user].attributes.sort_by { |k, _| k }.each do |k, v|
+      dt= k
+      dd= v.inspect
+
+- else
+  p You are not logged in
+  a href="/login" Log in
